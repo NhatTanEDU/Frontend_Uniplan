@@ -1,1 +1,1 @@
-web: npx serve -s build -l $PORT
+web: npx serve -c serve.json -l $PORT

@@ -90,7 +90,9 @@
         "dev:backend": "nodemon backend/server.js",
         "dev:frontend": "react-scripts start",
         "eject": "react-scripts eject",
-        "start": "react-scripts start",
+        "start": "npx serve -c serve.json -l $PORT",
+        "start:dev": "react-scripts start",
+        "start:production": "npx serve -c serve.json -l $PORT",
         "test": "react-scripts test"
     }
 }

@@ -5,7 +5,7 @@
     "buildCommand": "node debug-env.js && npm run build"
   },
   "deploy": {
-    "startCommand": "npx serve -c serve.json -l $PORT",
+    "startCommand": "node start-debug.js",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }

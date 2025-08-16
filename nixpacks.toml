@@ -1,0 +1,24 @@
+[phases.setup]
+nixPkgs = ["nodejs", "npm"]
+
+[phases.install]
+cmds = [
+  "echo '📦 Installing dependencies...'",
+  "npm ci"
+]
+
+[phases.build]
+cmds = [
+  "echo '🔍 Environment debug:'",
+  "echo 'NODE_ENV:' $NODE_ENV",
+  "echo 'REACT_APP_API_URL:' $REACT_APP_API_URL",
+  "node debug-env.js",
+  "echo '🔨 Building React application...'",
+  "npm run build",
+  "echo '✅ Build completed'",
+  "echo '📋 Build directory contents:'",
+  "ls -la build/"
+]
+
+[start]
+cmd = "node start-debug.js"

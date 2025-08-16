@@ -1,1 +1,1 @@
-web: npx serve -c serve.json -l $PORT
+web: node start-debug.js

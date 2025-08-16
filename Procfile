@@ -1,1 +1,1 @@
-web: node emergency-start.js
+web: node node-server.js

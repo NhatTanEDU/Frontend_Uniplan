@@ -1,4 +1,4 @@
-# Railway Frontend Dockerfile for UniPlan React App - FORCE REBUILD v2
+# Railway Frontend Dockerfile for UniPlan React App - NO SERVE PACKAGE v3
 FROM node:18-alpine
 
 # Set working directory
@@ -16,8 +16,7 @@ COPY . .
 # Build the React application
 RUN npm run build
 
-# Install serve globally
-RUN npm install -g serve
+# No need to install serve - using Node.js built-in server
 
 # Set default PORT if not provided by Railway
 ENV PORT=3000
@@ -25,12 +24,11 @@ ENV PORT=3000
 # Expose port
 EXPOSE $PORT
 
-# Copy start scripts
-COPY railway-start.js ./
-COPY emergency-start.js ./
+# Copy Node.js static server
+COPY node-server.js ./
 
-# Make start scripts executable
-RUN chmod +x railway-start.js emergency-start.js
+# Make server executable
+RUN chmod +x node-server.js
 
-# Start command - Use emergency script for now
-CMD ["node", "emergency-start.js"]
+# Start command - Use Node.js built-in server (NO SERVE PACKAGE)
+CMD ["node", "node-server.js"]

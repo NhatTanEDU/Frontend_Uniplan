@@ -1,1 +1,1 @@
-web: node node-server.js
+web: node debug-railway-command.js

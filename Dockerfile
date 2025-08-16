@@ -24,11 +24,12 @@ ENV PORT=3000
 # Expose port
 EXPOSE $PORT
 
-# Copy Node.js static server
+# Copy Node.js static server and debug script
 COPY node-server.js ./
+COPY debug-railway-command.js ./
 
-# Make server executable
-RUN chmod +x node-server.js
+# Make scripts executable
+RUN chmod +x node-server.js debug-railway-command.js
 
-# Start command - Use Node.js built-in server (NO SERVE PACKAGE)
-CMD ["node", "node-server.js"]
+# Start command - Use debug script to verify Railway command
+CMD ["node", "debug-railway-command.js"]

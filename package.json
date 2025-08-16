@@ -90,7 +90,7 @@
         "dev:backend": "nodemon backend/server.js",
         "dev:frontend": "react-scripts start",
         "eject": "react-scripts eject",
-        "start": "node check-railway-env.js --start",
+        "start": "node railway-start.js",
         "start:dev": "react-scripts start",
         "start:production": "npx serve -c serve.json -l $PORT",
         "test": "react-scripts test"

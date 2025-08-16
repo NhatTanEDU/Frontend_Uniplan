@@ -19,8 +19,17 @@ RUN npm run build
 # Install serve globally
 RUN npm install -g serve
 
-# Expose port (Railway will override with $PORT)
-EXPOSE 3000
+# Set default PORT if not provided by Railway
+ENV PORT=3000
+
+# Expose port
+EXPOSE $PORT
+
+# Copy start script
+COPY railway-start.js ./
+
+# Make start script executable
+RUN chmod +x railway-start.js
 
 # Start command
-CMD ["node", "check-railway-env.js", "--start"]
+CMD ["node", "railway-start.js"]

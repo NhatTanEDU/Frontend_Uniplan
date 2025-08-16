@@ -1,1 +1,1 @@
-web: node start-debug.js
+web: node railway-start.js

@@ -1,1 +1,1 @@
-web: node railway-start.js
+web: node emergency-start.js

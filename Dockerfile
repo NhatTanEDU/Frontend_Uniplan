@@ -1,4 +1,4 @@
-# Railway Frontend Dockerfile for UniPlan React App
+# Railway Frontend Dockerfile for UniPlan React App - FORCE REBUILD v2
 FROM node:18-alpine
 
 # Set working directory
@@ -25,11 +25,12 @@ ENV PORT=3000
 # Expose port
 EXPOSE $PORT
 
-# Copy start script
+# Copy start scripts
 COPY railway-start.js ./
+COPY emergency-start.js ./
 
-# Make start script executable
-RUN chmod +x railway-start.js
+# Make start scripts executable
+RUN chmod +x railway-start.js emergency-start.js
 
-# Start command
-CMD ["node", "railway-start.js"]
+# Start command - Use emergency script for now
+CMD ["node", "emergency-start.js"]

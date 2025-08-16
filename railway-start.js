@@ -48,11 +48,11 @@ const finalPort = process.env.PORT || '3000';
 console.log('\n🚀 Starting serve...');
 console.log('🌐 Command: npx serve -s build -l', finalPort);
 
-// Use serve without -l flag (alternative approach)
-const serveArgs = ['-s', 'build', '-p', finalPort];
-console.log('🔧 Alternative command: npx serve', serveArgs.join(' '));
+// Use serve with PORT environment variable (no flags)
+console.log('🔧 Command: npx serve -s build');
+console.log('🌐 PORT environment variable:', finalPort);
 
-const serveProcess = spawn('npx', ['serve', ...serveArgs], {
+const serveProcess = spawn('npx', ['serve', '-s', 'build'], {
   stdio: 'inherit',
   env: {
     ...process.env,
@@ -63,10 +63,9 @@ const serveProcess = spawn('npx', ['serve', ...serveArgs], {
 serveProcess.on('error', (error) => {
   console.error('❌ Serve process error:', error);
   
-  // Fallback: try with different serve syntax
-  console.log('🔄 Trying fallback serve command...');
-  const fallbackArgs = ['-s', 'build'];
-  const fallbackProcess = spawn('npx', ['serve', ...fallbackArgs], {
+  // Fallback: try with basic serve command
+  console.log('🔄 Trying fallback: basic serve command...');
+  const fallbackProcess = spawn('npx', ['serve', 'build'], {
     stdio: 'inherit',
     env: {
       ...process.env,
